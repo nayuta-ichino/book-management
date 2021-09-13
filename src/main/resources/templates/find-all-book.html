@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/css/common.css}" rel="stylesheet">
+<link th:href="@{/css/reset.css}" rel="stylesheet">
+<link th:href="@{/css/find-all-book.css}" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- header -->
+	<div th:replace="common::header"></div>
+	<!-- header -->
+	
+	<div id="contents">
+		<div id="content">
+			<div class="book" th:each="book:${bookList}">
+				<p class="title index" th:text="タイトル： + ${book.name}"></p>
+				<p class="author index" th:text="作者： + ${book.author}"></p>
+				<p class="heading">[あらすじ]</p>
+				<p class="synopsis index" th:text="${book.synopsis}"></p>
+				<p class="heading">[感想]</p>
+				<p class="thoughts index" th:text="${book.thoughts}"></p>
+			</div>		
+		</div>
+	</div>
 
-	<h1>図書管理</h1>
+<!-- footer -->
+<div th:replace="common::footer"></div>
+<!-- footer -->
 </body>
 </html>
