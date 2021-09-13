@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.example.domain.Book;
+import com.example.form.BookForm;
 
 /**
  * booksテーブルを操作するRepository.
@@ -41,11 +44,27 @@ public class BookRepository {
 		List<Book> bookList = new ArrayList<>();
 
 		// SQL文を作成
-		String sql = "SELECT id, name, author, synopsis, thoughts FROM books ORDER BY id";
+		String sql = "SELECT id, name, author, synopsis, thoughts FROM books ORDER BY id;";
 		// 実行
 		bookList = template.query(sql, BOOK_ROW_MAPPER);
 
 		return bookList;
+	}
+
+	/**
+	 * bookFormから入力された本の情報を挿入.
+	 * 
+	 * @param bookForm form画面に入力された情報
+	 */
+	public void insert(BookForm bookForm) {
+		// プレースホルダー埋め込み
+		SqlParameterSource params = new BeanPropertySqlParameterSource(bookForm);
+
+		// SQL文を作成
+		String insertSpl = "INSERT INTO books (name, author, synopsis, thoughts) VALUES (:name, :author, :synopsis, :thoughts);";
+
+		// 実行
+		template.update(insertSpl, params);
 	}
 
 }

@@ -1,1 +1,13 @@
 @charset "UTF-8";
+
+.contents{
+	text-align: center;
+	
+	padding: 30px 30px 0 30px;
+}
+
+#btn{
+	font-size: 20px;
+	
+	margin-top: 30px;
+}

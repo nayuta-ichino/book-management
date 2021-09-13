@@ -12,6 +12,8 @@
 	<div th:replace="common::header"></div>
 	<!-- header -->
 	
+	<a id="btn" th:href="@{/insert}">新規に図書を貯蔵</a>
+	
 	<div id="contents">
 		<div id="content">
 			<div class="book" th:each="book:${bookList}">

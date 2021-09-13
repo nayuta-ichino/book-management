@@ -2,9 +2,31 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/css/common.css}" rel="stylesheet">
+<link th:href="@{/css/insert-book-list.css}" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- header -->
+	<div th:replace="common::header"></div>
+	<!-- header -->
 
+	<div class="contents">
+		<form th:action="@{/insert/insert-book}" method="POST">
+			<p class="input">作品名：<input name="name"></p>
+			<p class="input">作　者：<input name="author"></p>
+			<p>[あらすじ]</p>
+			<textarea name="synopsis" rows="2" cols="40"></textarea>
+			<p>[感想]</p>
+			<textarea name="thoughts" rows="4" cols="40"></textarea>
+
+			<br>
+			<button id="btn" type="submit">登録</button>
+		</form>
+	</div>
+
+	<!-- footer -->
+	<div th:replace="common::footer"></div>
+	<!-- footer -->
 </body>
 </html>
