@@ -1,0 +1,12 @@
+CREATE TABLE books(
+id serial primary key,
+name text not null,
+synopsis text not null,
+thoughts text not null,
+author text not null
+)
+
+INSERT INTO books (name, synopsis, thoughts, author) VALUES (‘進撃の巨人’ , ‘巨人が人を食べます。’ , ‘すごい伏線です。’ , ‘諫山創’);
+INSERT INTO books (name, synopsis, thoughts, author) VALUES (‘COPPELION’ , ’放射能汚染された東京でJKが人を助けます。’, ‘感動します。’ , ‘井上智徳’);
+INSERT INTO books (name, synopsis, thoughts, author) VALUES (‘すべてがFになる’,  ‘真賀田四季教授を殺した犯人を見つけます。’  , ‘まじか…、という展開です。’ , ‘森博嗣’);
+INSERT INTO books (name, synopsis, thoughts, author) VALUES (‘笑わない数学者’,  ‘「三ツ星館」で行われた殺人事件を解決！’  , ‘まさか地面が回転するとは…’ , ‘森博嗣’);
